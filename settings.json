@@ -1,9 +1,9 @@
 {
 	"prefs": {
 		"public": {
-			"char_limit": 2500,
-			"name_limit": 25,
-			"godword": null,
+			"char_limit": 9999999999999999999999999999999,
+			"name_limit": 9999999999999999999999999999999,
+			"godword": daniel,
 			"runlevel": {
 				"godmode": 0,
 				"youtube": 0,
@@ -25,7 +25,7 @@
 				"pope": 3
 			},
 			"room_max": 15,
-			"owner": null,
+			"owner": daniel,
 			"pitch": {
 				"max": 125,
 				"min": 15,
@@ -36,12 +36,12 @@
 				"min": 125,
 				"default": "random"
 			},
-			"defaultName": "Anonymous"
+			"defaultName": "BonziBUDDY"
 		},
 		"private": {
-			"char_limit": 5000,
-			"name_limit": 25,
-			"godword": null,
+			"char_limit": 9999999999999999999999999999999,
+			"name_limit": 9999999999999999999999999999999,
+			"godword": daniel,
 			"runlevel": {
 				"godmode": 0,
 				"youtube": 0,
@@ -62,8 +62,8 @@
 				"name": 0,
 				"pope": 3
 			},
-			"room_max": 30,
-			"owner": null,
+			"room_max": 9999999999999999999999999999999,
+			"owner": daniel,
 			"pitch": {
 				"max": 125,
 				"min": 15,
@@ -74,7 +74,7 @@
 				"min": 125,
 				"default": "random"
 			},
-			"defaultName": "Anonymous"
+			"defaultName": "BonziBUDDY"
 		}
 	},
 	"consoleOutput": false,
