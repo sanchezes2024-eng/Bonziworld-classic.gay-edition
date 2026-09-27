@@ -727,121 +727,120 @@ body.vaporwave #chat_message {
 }
 
 .settings {
-\tz-index: 9999;
+	z-index: 9999;
 }
 
 .settings .window_content {
-\tdisplay: flex;
-\tflex-direction: column;
-\tpadding: 0;
+	display: flex;
+	flex-direction: column;
+	padding: 0;
 }
 
 .settings_sidebar {
-\tdisplay: flex;
-\tflex-direction: column;
-\twidth: 120px;
-\tborder-right: 1px solid grey;
+	display: flex;
+	flex-direction: column;
+	width: 120px;
+	border-right: 1px solid grey;
 }
 
 .settings_category {
-\tcursor: pointer;
-\tuser-select: none;
-\tpadding: 2px;
-\tpadding-left: 16px;
-\tborder-left: 3px solid transparent;
+	cursor: pointer;
+	user-select: none;
+	padding: 2px;
+	padding-left: 16px;
+	border-left: 3px solid transparent;
 }
 
 .settings_category.selected {
-\tbackground-color: #ddb;
+	background-color: #ddb;
 }
 
 .settings_content {
-\tflex: 1;
-\tdisplay: flex;
-\tflex-direction: column;
+	flex: 1;
+	display: flex;
+	flex-direction: column;
 }
 
-
 .settings_content>label {
-\talign-self: start;
+	align-self: start;
 }
 
 .settings_content input[type=checkbox] {
-\tmargin-left: 0;
+	margin-left: 0;
 }
 
 small {
-\tcolor: grey;
+	color: grey;
 }
 
 .window_content {
-\tflex: 1;
-\tpadding: 2px;
-\toverflow: hidden auto;
+	flex: 1;
+	padding: 2px;
+	overflow: hidden auto;
 }
 
 .alert_body {
-\tdisplay: flex;
-\tflex-direction: column;
-\tgap: 12px;
-\tpadding: 12px;
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+	padding: 12px;
 }
 
 .alert_button_row {
-\tdisplay: flex;
-\tflex-direction: row;
-\tjustify-content: center;
-\tgap: 2px;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	gap: 2px;
 }
 
 .alert_text {
-\tdisplay: flex;
-\tflex-direction: column;
-\tjustify-content: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
 }
 
 .settings_textarea {
-\tflex: 1;
-\tmargin-top: 2px;
+	flex: 1;
+	margin-top: 2px;
 }
 
 textarea {
-\tbackground: white;
-\tborder: 1px solid black;
-\tmargin: 0;
-\tresize: none;
+	background: white;
+	border: 1px solid black;
+	margin: 0;
+	resize: none;
 }
 
 .export_window .window_content {
-\tdisplay: flex;
-\tflex-direction: column;
-\tgap: 4px;
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
 }
 
 .import_window .window_content {
-\tdisplay: flex;
-\tflex-direction: column;
-\tgap: 4px;
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
 }
 
 .button_row {
-\tdisplay: flex;
-\tflex-direction: row;
-\tjustify-content: end;
-\tgap: 2px;
+	display: flex;
+	flex-direction: row;
+	justify-content: end;
+	gap: 2px;
 }
 
 .settings .button_row {
-\tmargin-top: 2px;
+	margin-top: 2px;
 }
 
 .button_row>button {
-\tcursor: pointer;
-\tpadding: 1px 8px;
-\tbackground-color: transparent;
-\tborder: 1px outset grey;
+	cursor: pointer;
+	padding: 1px 8px;
+	background-color: transparent;
+	border: 1px outset grey;
 }
 
 .button_row>button:active {
-\tborder: 1px inset grey;
+	border: 1px inset grey;
 }
