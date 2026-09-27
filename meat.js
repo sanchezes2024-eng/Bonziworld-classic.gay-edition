@@ -133,6 +133,13 @@ let userCommands = {
 
         question = this.private.sanitize ? sanitize(question) : question;
 
+        if (this.room.poll && this.room.pollOwner) {
+            this.room.emit("pollEnd", {
+                guid: this.room.pollOwner
+            });
+        }
+        clearTimeout(this.room.pollTimer);
+
         this.room.pollOwner = this.guid;
         this.room.poll = {
             question: question,
@@ -148,7 +155,6 @@ let userCommands = {
             no: 0
         });
 
-        clearTimeout(this.room.pollTimer);
         this.room.pollTimer = setTimeout(() => {
             if (this.room.poll) {
                 this.room.emit("pollEnd", {
