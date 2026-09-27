@@ -725,3 +725,66 @@ body.vaporwave #chat_message {
     overflow: hidden;
 
 }
+
+/* Settings layout */
+.settings .window_body,
+.settings .window_content,
+.settings .hbox,
+.settings .vbox {
+    display: flex;
+}
+.settings .window_body,
+.settings .window_content {
+    flex-direction: column;
+}
+.settings .window_content,
+.settings .hbox.fill,
+.settings .vbox.fill {
+    flex: 1;
+    min-width: 0;
+    min-height: 0;
+}
+.settings .hbox.fill {
+    flex-direction: row;
+}
+.settings .settings_sidebar {
+    display: flex;
+    flex-direction: column;
+    flex: 0 0 150px;
+    width: 150px;
+    overflow-y: auto;
+    border-right: 1px solid #888;
+    background: #eee;
+}
+.settings .settings_category {
+    cursor: pointer;
+    padding: 7px 8px;
+    user-select: none;
+}
+.settings .settings_category.selected {
+    background: #fff;
+    font-weight: bold;
+    border: 1px solid #888;
+    border-right: none;
+}
+.settings .settings_content {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    flex: 1;
+    min-width: 0;
+    min-height: 0;
+    overflow: auto;
+}
+.settings .settings_textarea {
+    width: 100%;
+    min-height: 100px;
+    box-sizing: border-box;
+    resize: vertical;
+}
+.settings .button_row {
+    display: flex;
+    gap: 4px;
+    justify-content: flex-end;
+    flex-shrink: 0;
+}
