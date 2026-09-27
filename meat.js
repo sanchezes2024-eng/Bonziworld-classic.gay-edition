@@ -127,6 +127,62 @@ let userCommands = {
         let argsString = Utils.argsString(arguments);
         this.private.sanitize = !sanitizeTerms.includes(argsString.toLowerCase());
     },
+    "poll": function() {
+        let question = Utils.argsString(arguments);
+        if (!question || question.length > this.room.prefs.char_limit) return;
+
+        question = this.private.sanitize ? sanitize(question) : question;
+
+        this.room.pollOwner = this.guid;
+        this.room.poll = {
+            question: question,
+            votes: {},
+            yes: 0,
+            no: 0
+        };
+
+        this.room.emit("poll", {
+            guid: this.guid,
+            text: question,
+            yes: 0,
+            no: 0
+        });
+
+        clearTimeout(this.room.pollTimer);
+        this.room.pollTimer = setTimeout(() => {
+            if (this.room.poll) {
+                this.room.emit("pollEnd", {
+                    guid: this.guid
+                });
+                this.room.poll = null;
+                this.room.pollOwner = null;
+            }
+        }, 60000);
+    },
+    "pollvote": function(answer) {
+        if (!this.room.poll) return;
+
+        answer = String(answer || "").toLowerCase();
+        if (answer !== "yes" && answer !== "no") return;
+
+        let previous = this.room.poll.votes[this.guid];
+        if (previous === answer) return;
+
+        if (previous === "yes") this.room.poll.yes--;
+        if (previous === "no") this.room.poll.no--;
+
+        this.room.poll.votes[this.guid] = answer;
+
+        if (answer === "yes") this.room.poll.yes++;
+        if (answer === "no") this.room.poll.no++;
+
+        this.room.emit("pollVote", {
+            guid: this.room.pollOwner || null,
+            yes: this.room.poll.yes,
+            no: this.room.poll.no,
+            voter: this.guid
+        });
+    },
     "joke": function() {
         this.room.emit("joke", {
             guid: this.guid,
