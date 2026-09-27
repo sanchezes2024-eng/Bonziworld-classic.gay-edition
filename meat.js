@@ -133,19 +133,21 @@ let userCommands = {
 
         question = this.private.sanitize ? sanitize(question) : question;
 
-        if (this.room.poll && this.room.pollOwner) {
+        if (!this.room.polls) this.room.polls = {};
+
+        if (this.room.polls[this.guid]) {
+            clearTimeout(this.room.polls[this.guid].timer);
             this.room.emit("pollEnd", {
-                guid: this.room.pollOwner
+                guid: this.guid
             });
         }
-        clearTimeout(this.room.pollTimer);
 
-        this.room.pollOwner = this.guid;
-        this.room.poll = {
+        this.room.polls[this.guid] = {
             question: question,
             votes: {},
             yes: 0,
-            no: 0
+            no: 0,
+            timer: null
         };
 
         this.room.emit("poll", {
@@ -155,37 +157,41 @@ let userCommands = {
             no: 0
         });
 
-        this.room.pollTimer = setTimeout(() => {
-            if (this.room.poll) {
-                this.room.emit("pollEnd", {
-                    guid: this.guid
-                });
-                this.room.poll = null;
-                this.room.pollOwner = null;
-            }
+        this.room.polls[this.guid].timer = setTimeout(() => {
+            if (!this.room.polls || !this.room.polls[this.guid]) return;
+
+            this.room.emit("pollEnd", {
+                guid: this.guid
+            });
+
+            delete this.room.polls[this.guid];
         }, 60000);
     },
-    "pollvote": function(answer) {
-        if (!this.room.poll) return;
+    "pollvote": function(answer, owner) {
+        if (!this.room.polls) return;
+
+        owner = String(owner || "");
+        let poll = this.room.polls[owner];
+        if (!poll) return;
 
         answer = String(answer || "").toLowerCase();
         if (answer !== "yes" && answer !== "no") return;
 
-        let previous = this.room.poll.votes[this.guid];
+        let previous = poll.votes[this.guid];
         if (previous === answer) return;
 
-        if (previous === "yes") this.room.poll.yes--;
-        if (previous === "no") this.room.poll.no--;
+        if (previous === "yes") poll.yes--;
+        if (previous === "no") poll.no--;
 
-        this.room.poll.votes[this.guid] = answer;
+        poll.votes[this.guid] = answer;
 
-        if (answer === "yes") this.room.poll.yes++;
-        if (answer === "no") this.room.poll.no++;
+        if (answer === "yes") poll.yes++;
+        if (answer === "no") poll.no++;
 
         this.room.emit("pollVote", {
-            guid: this.room.pollOwner || null,
-            yes: this.room.poll.yes,
-            no: this.room.poll.no,
+            guid: owner,
+            yes: poll.yes,
+            no: poll.no,
             voter: this.guid
         });
     },
