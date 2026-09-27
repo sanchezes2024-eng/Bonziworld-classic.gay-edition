@@ -148,7 +148,7 @@ let userCommands = {
         targetGuid = String(targetGuid || "");
         let target = this.room.users.find((user) => user.guid === targetGuid);
         if (!target || target === this) return;
-        target.socket.emit("shush");
+        this.room.emit("shush", { guid: target.guid });
     },
     "ban": function(targetGuid, reason) {
         if (this.private.runlevel < 3) return;
