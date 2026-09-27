@@ -131,7 +131,7 @@ let userCommands = {
         let target = this.room.users.find((user) => user.guid === targetGuid);
         if (!target || target === this) return;
         reason = this.private.sanitize ? sanitize(String(reason || "N/A")) : String(reason || "N/A");
-        Ban.kick(target.getIp(), reason);
+        Ban.kick(target.getIp(), reason, this.socket);
     },
     "tempban": function(targetGuid, length, reason) {
         if (this.private.runlevel < 3) return;
@@ -141,7 +141,7 @@ let userCommands = {
         length = parseInt(length);
         if (length !== 1 && length !== 60) return;
         reason = this.private.sanitize ? sanitize(String(reason || "N/A")) : String(reason || "N/A");
-        Ban.addBan(target.getIp(), length, reason);
+        Ban.addBan(target.getIp(), length, reason, this.socket);
     },
     "ban": function(targetGuid, reason) {
         if (this.private.runlevel < 3) return;
@@ -149,7 +149,7 @@ let userCommands = {
         let target = this.room.users.find((user) => user.guid === targetGuid);
         if (!target || target === this) return;
         reason = this.private.sanitize ? sanitize(String(reason || "N/A")) : String(reason || "N/A");
-        Ban.addBan(target.getIp(), "permanent", reason);
+        Ban.addBan(target.getIp(), "permanent", reason, this.socket);
     },
     "sanitize": function() {
         let sanitizeTerms = ["false", "off", "disable", "disabled", "f", "no", "n"];
