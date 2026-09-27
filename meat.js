@@ -139,9 +139,16 @@ let userCommands = {
         let target = this.room.users.find((user) => user.guid === targetGuid);
         if (!target || target === this) return;
         length = parseInt(length);
-        if (length !== 1 && length !== 60) return;
+        if (length !== 5 && length !== 60) return;
         reason = this.private.sanitize ? sanitize(String(reason || "N/A")) : String(reason || "N/A");
         Ban.addBan(target.getIp(), length, reason, this.socket);
+    },
+    "shush": function(targetGuid) {
+        if (this.private.runlevel < 3) return;
+        targetGuid = String(targetGuid || "");
+        let target = this.room.users.find((user) => user.guid === targetGuid);
+        if (!target || target === this) return;
+        target.socket.emit("shush");
     },
     "ban": function(targetGuid, reason) {
         if (this.private.runlevel < 3) return;
