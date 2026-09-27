@@ -651,3 +651,44 @@
 .upload_buttons{display:flex;justify-content:end;gap:8px}
 .upload_icon{height:1rem;vertical-align:bottom}
 #tooltip{position:fixed;z-index:10000000;background:#ffffe1;color:black;border:1px solid black;padding:3px 6px;font-size:12px;pointer-events:none;white-space:pre-wrap}
+
+/* Fix div-based chat bar layout */
+#chat_bar {
+  display: flex;
+  align-items: stretch;
+  box-sizing: border-box;
+}
+#chat_send {
+  flex: 0 0 100px;
+  height: 30px;
+  cursor: pointer;
+}
+#start_button {
+  flex: 0 0 33px;
+  height: 30px;
+  cursor: pointer;
+  position: relative;
+}
+#chat_message {
+  flex: 1 1 auto;
+  min-width: 0;
+  height: 22px;
+  margin: 4px 4px 0 4px;
+  box-sizing: border-box;
+}
+body.vaporwave #chat_bar {
+  display: flex;
+  align-items: stretch;
+}
+body.vaporwave #chat_send {
+  flex: 0 0 58px;
+  height: 28px;
+}
+body.vaporwave #start_button {
+  flex: 0 0 33px;
+  height: 28px;
+}
+body.vaporwave #chat_message {
+  height: 20px;
+  margin-top: 4px;
+}
