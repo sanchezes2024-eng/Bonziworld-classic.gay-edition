@@ -31,7 +31,7 @@ exports.saveBans = function() {
 };
 
 // Ban length is in minutes
-exports.addBan = function(ip, length, reason) {
+exports.addBan = function(ip, length, reason, excludeSocket) {
 	var permanent = String(length).toLowerCase() == "permanent";
 	length = parseFloat(length) || settings.banLength;
 	reason = reason || "N/A";
@@ -45,7 +45,7 @@ exports.addBan = function(ip, length, reason) {
 
 	for (var i = 0; i < socketList.length; i++) {
 		var socket = sockets[socketList[i]];
-		if (socket.request.connection.remoteAddress == ip)
+		if (socket.request.connection.remoteAddress == ip && socket !== excludeSocket)
 			exports.handleBan(socket);
 	}
 	exports.saveBans();
@@ -74,13 +74,13 @@ exports.handleBan = function(socket) {
 	return true;
 };
 
-exports.kick = function(ip, reason) {
+exports.kick = function(ip, reason, excludeSocket) {
 	var sockets = io.sockets.sockets;
 	var socketList = Object.keys(sockets);
 
 	for (var i = 0; i < socketList.length; i++) {
 		var socket = sockets[socketList[i]];
-		if (socket.request.connection.remoteAddress == ip) {
+		if (socket.request.connection.remoteAddress == ip && socket !== excludeSocket) {
 			socket.emit('kick', {
 				reason: reason || "N/A"
 			});
