@@ -1,4 +1,7 @@
-# BonziWORLD Classic
+# BonziWORLD Classic.kr
+
+I tried to remake BonziWORLD.kr using the codebase of bonziworld classic by vibecoding in new features and i got this.
+
 
 This project has been created which is revival of BonziWORLD Classic. Thanks for all the laughs and memes along the way.
 This is also a revival of Foodz's BonziWORLD Classic. Note that the /owo command has been removed the voice has changed back to espeak.js, due to v1.4.2 conditions.
