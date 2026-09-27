@@ -42,10 +42,15 @@
             <table id="chat_bar">
                 <tr>
                     <td id="chat_send">send</td>
-                    <td id="chat_start_menu" title="Open menu">+</td>
+                    <td><div id="start_button">+</div></td>
                     <td id="chat_message_cont"><input id="chat_message" type="text" placeholder="Enter a message" /></td>
                 </tr>
             </table>
+            <div id="start_menu">
+                <div id="start_menu_pfp" style="background-image: url(&quot;/img/pfp/your color.webp&quot;);"></div>
+                <input id="start_menu_name" autocorrect="off" maxlength="25" value="Anonymous">
+                <div id="start_menu_body"></div>
+            </div>
             <div id="page_login" class="page">
                 <div id="login_apps" class="app_showcase"></div>
                 <div id="login_readme">Make sure to check out the <a id="readme" href="readme.html" target="_blank">README</a> before use.</div>
