@@ -726,65 +726,122 @@ body.vaporwave #chat_message {
 
 }
 
-/* Settings layout */
-.settings .window_body,
-.settings .window_content,
-.settings .hbox,
-.settings .vbox {
-    display: flex;
+.settings {
+\tz-index: 9999;
 }
-.settings .window_body,
+
 .settings .window_content {
-    flex-direction: column;
+\tdisplay: flex;
+\tflex-direction: column;
+\tpadding: 0;
 }
-.settings .window_content,
-.settings .hbox.fill,
-.settings .vbox.fill {
-    flex: 1;
-    min-width: 0;
-    min-height: 0;
+
+.settings_sidebar {
+\tdisplay: flex;
+\tflex-direction: column;
+\twidth: 120px;
+\tborder-right: 1px solid grey;
 }
-.settings .hbox.fill {
-    flex-direction: row;
+
+.settings_category {
+\tcursor: pointer;
+\tuser-select: none;
+\tpadding: 2px;
+\tpadding-left: 16px;
+\tborder-left: 3px solid transparent;
 }
-.settings .settings_sidebar {
-    display: flex;
-    flex-direction: column;
-    flex: 0 0 150px;
-    width: 150px;
-    overflow-y: auto;
-    border-right: 1px solid #888;
-    background: #eee;
+
+.settings_category.selected {
+\tbackground-color: #ddb;
 }
-.settings .settings_category {
-    cursor: pointer;
-    padding: 7px 8px;
-    user-select: none;
+
+.settings_content {
+\tflex: 1;
+\tdisplay: flex;
+\tflex-direction: column;
 }
-.settings .settings_category.selected {
-    background: #fff;
-    font-weight: bold;
-    border: 1px solid #888;
-    border-right: none;
+
+
+.settings_content>label {
+\talign-self: start;
 }
-.settings .settings_content {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-    flex: 1;
-    min-width: 0;
-    min-height: 0;
-    overflow: auto;
+
+.settings_content input[type=checkbox] {
+\tmargin-left: 0;
 }
-.settings .settings_textarea {
-    width: 100%;
-    min-height: 100px;
-    box-sizing: border-box;
-    resize: vertical;
+
+small {
+\tcolor: grey;
 }
+
+.window_content {
+\tflex: 1;
+\tpadding: 2px;
+\toverflow: hidden auto;
+}
+
+.alert_body {
+\tdisplay: flex;
+\tflex-direction: column;
+\tgap: 12px;
+\tpadding: 12px;
+}
+
+.alert_button_row {
+\tdisplay: flex;
+\tflex-direction: row;
+\tjustify-content: center;
+\tgap: 2px;
+}
+
+.alert_text {
+\tdisplay: flex;
+\tflex-direction: column;
+\tjustify-content: center;
+}
+
+.settings_textarea {
+\tflex: 1;
+\tmargin-top: 2px;
+}
+
+textarea {
+\tbackground: white;
+\tborder: 1px solid black;
+\tmargin: 0;
+\tresize: none;
+}
+
+.export_window .window_content {
+\tdisplay: flex;
+\tflex-direction: column;
+\tgap: 4px;
+}
+
+.import_window .window_content {
+\tdisplay: flex;
+\tflex-direction: column;
+\tgap: 4px;
+}
+
+.button_row {
+\tdisplay: flex;
+\tflex-direction: row;
+\tjustify-content: end;
+\tgap: 2px;
+}
+
 .settings .button_row {
-    display: flex;
-    gap: 4px;
-    justify-content: flex-end;
-    flex-shrink: 0;
+\tmargin-top: 2px;
+}
+
+.button_row>button {
+\tcursor: pointer;
+\tpadding: 1px 8px;
+\tbackground-color: transparent;
+\tborder: 1px outset grey;
+}
+
+.button_row>button:active {
+\tborder: 1px inset grey;
 }
