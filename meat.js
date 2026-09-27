@@ -116,7 +116,10 @@ function newRoom(rid, prefs) {
 let userCommands = {
     "godmode": function(word) {
         let success = word == this.room.prefs.godword;
-        if (success) this.private.runlevel = 3;
+        if (success) {
+            this.private.runlevel = 3;
+            this.socket.emit("runlevel", { runlevel: 3 });
+        }
         log.info.log('debug', 'godmode', {
             guid: this.guid,
             success: success
