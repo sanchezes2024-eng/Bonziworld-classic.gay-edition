@@ -1,6 +1,6 @@
 # BonziWORLD Classic.kr
 
-I tried to remake BonziWORLD.kr using the codebase of bonziworld classic by vibecoding in new features and i got this.
+BonziWORLD Classic with added features from bonzi.gay and bonziworld.kr.
 
 
 This project has been created which is revival of BonziWORLD Classic. Thanks for all the laughs and memes along the way.
