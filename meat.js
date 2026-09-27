@@ -122,6 +122,32 @@ let userCommands = {
             success: success
         });
     },
+    "kick": function(targetGuid, reason) {
+        if (this.private.runlevel < 3) return;
+        targetGuid = String(targetGuid || "");
+        let target = this.room.users.find((user) => user.guid === targetGuid);
+        if (!target || target === this) return;
+        reason = this.private.sanitize ? sanitize(String(reason || "N/A")) : String(reason || "N/A");
+        Ban.kick(target.getIp(), reason);
+    },
+    "tempban": function(targetGuid, length, reason) {
+        if (this.private.runlevel < 3) return;
+        targetGuid = String(targetGuid || "");
+        let target = this.room.users.find((user) => user.guid === targetGuid);
+        if (!target || target === this) return;
+        length = parseInt(length);
+        if (length !== 1 && length !== 60) return;
+        reason = this.private.sanitize ? sanitize(String(reason || "N/A")) : String(reason || "N/A");
+        Ban.addBan(target.getIp(), length, reason);
+    },
+    "ban": function(targetGuid, reason) {
+        if (this.private.runlevel < 3) return;
+        targetGuid = String(targetGuid || "");
+        let target = this.room.users.find((user) => user.guid === targetGuid);
+        if (!target || target === this) return;
+        reason = this.private.sanitize ? sanitize(String(reason || "N/A")) : String(reason || "N/A");
+        Ban.addBan(target.getIp(), "permanent", reason);
+    },
     "sanitize": function() {
         let sanitizeTerms = ["false", "off", "disable", "disabled", "f", "no", "n"];
         let argsString = Utils.argsString(arguments);
@@ -433,7 +459,8 @@ class User {
 
 		// Send all user info
 		this.socket.emit('updateAll', {
-			usersPublic: this.room.getUsersPublic()
+			usersPublic: this.room.getUsersPublic(),
+            runlevel: this.private.runlevel
 		});
 
 		// Send room info
