@@ -692,3 +692,36 @@ body.vaporwave #chat_message {
   height: 20px;
   margin-top: 4px;
 }
+
+.window_header {
+    display: flex;
+    user-select: none;
+    align-items: center;
+    height: 32px;
+    padding: 2px 7px 0 10px;
+    border-image: url(../img/desktop/window_header.png) 0 9 fill / 0px 9px;
+    image-rendering: pixelated;
+    color: white;
+    font-size: 16px;
+    text-shadow: #0006 2px 2px 1px;
+
+}
+.window_close {
+    margin-left: auto;
+    width: 21px;
+    height: 21px;
+    margin-bottom: 2px;
+    background-image: url(../img/desktop/close.png);
+
+}
+.window_body {
+    flex: 1;
+    display: flex;
+    align-items: stretch;
+    padding: 0px 5px 5px 5px;
+    border-image: url(../img/desktop/window_border.png) 0 6 6 6 / 0px 6px 6px 6px;
+    image-rendering: pixelated;
+    background: #ffe;
+    overflow: hidden;
+
+}
