@@ -583,3 +583,21 @@
 
 /* Poll speech bubble */
 .poll_question{margin-bottom:8px}.poll_buttons{display:flex;gap:6px}.poll_button{flex:1;box-sizing:border-box;border:1px solid #999;background:linear-gradient(#fff,#eee);border-radius:3px;padding:5px 7px;text-align:left;font:12px Tahoma,Arial,sans-serif;color:#222;cursor:pointer;display:flex;align-items:center;justify-content:space-between}.poll_button:hover{background:linear-gradient(#fff,#ddd)}.poll_button.poll_selected{background:#d9e8ff;border-color:#316ac5;box-shadow:inset 0 0 0 1px #9bbce8}.poll_count{font-weight:bold;margin-left:8px;min-width:12px;text-align:right}.poll_yes_count,.poll_no_count{color:#333}
+
+/* Runlevel 3 moderation context-menu */
+.context-menu-item.context-menu-input[name="reason"] > label > span {
+    display: block;
+    margin-bottom: 3px;
+    color: #000;
+}
+.context-menu-item.context-menu-input[name="reason"].context-menu-hover > label > span {
+    color: #000;
+}
+.context-menu-item.context-menu-input[name="reason"] > label > input[type="text"] {
+    min-width: 150px;
+    padding: 3px;
+    border: 1px solid #7f9db9;
+    background: #fff;
+    color: #000;
+    box-sizing: border-box;
+}
